@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <script src="src/jquery-3.5.1.min.js"></script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <header><p class="header_text">Fourier examples</p></header>
+    <div class="first active functions"><p>\(f(x) = x = 2*\sum_{n=1}^\infty \left((-1)^{n+1}\cdot sin(nx)\over n\right)\)</p>
+    </div>
+    <div class="first-plot plots"><object class="plot1" type="text/html" data="data/plot1.html"></object>
+    </div>
+    <div class="second active functions"><p>\(f(x) = x^2 = {\pi^2\over 3}+4*\sum_{n=1}^\infty \left((-1)^{n}\cdot cos(nx)\over n^2\right)\)</p>
+    </div>
+    <div class="second-plot plots"><object class="plot2" type="text/html" data="data/plot2.html"></object></div>
+    <div class="third active functions"><p>\(f(x) = sign x = {4\over \pi}+4*\sum_{n=1}^\infty \left(sin((2n-1)\cdot x)\over 2n-1\right)\)</p>
+    </div>
+    <div class="third-plot plots"><object class="plot3" type="text/html" data="data/plot3.html"></object></div>
+    <script src="src/index.js"></script>
+</body>
+</html>

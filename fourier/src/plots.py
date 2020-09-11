@@ -11,6 +11,8 @@ A = -4
 B = 4
 STEP = 0.1
 N = 1000
+width = 9.79
+height = 5.83
 
 " Functions "
 first_default = lambda x: x
@@ -48,7 +50,7 @@ def first_plot():
                         'f':first_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_first_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(width,height))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -65,7 +67,7 @@ def second_plot():
                         'f':second_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_second_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(width,height))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -83,11 +85,11 @@ def third_plot():
                         'f':third_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_third_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(width,height))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
-    sns.lineplot(data=default, x="x", y="f", linewidth = 2)
-    sns.lineplot(data=fourier, x="x", y="f", linewidth = 2)
+    sns.lineplot(data=default, x="x", y="f", linewidth = 3)
+    sns.lineplot(data=fourier, x="x", y="f", linewidth = 3)
     plt.legend(labels=['Default', 'Fourier'])
     if ('-show' not in sys.argv): 
         plt.savefig(f"{DATA_DIR}\\plot3.png")
