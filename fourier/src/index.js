@@ -1,3 +1,7 @@
+if (document.documentElement.clientWidth <= 1024) {
+  document.querySelector('.header_text').textContent = "Your device doesn't support"
+}
+
 const firstDiv = document.querySelector('.first')
 const secondDiv = document.querySelector('.second')
 const thirdDiv = document.querySelector('.third')

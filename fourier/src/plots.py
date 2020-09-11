@@ -10,9 +10,14 @@ DATA_DIR = os.path.join( os.path.dirname( __file__ ), '..', 'data\\' )
 A = -4
 B = 4
 STEP = 0.1
-N = 1000
-width = 9.79
-height = 5.83
+if (len(sys.argv) == 0):
+    try:
+        N = int(sys.argv[1])
+    except ValueError as e:
+        N = 1000
+else: N = 1000
+WIDTH = 9.79
+HEIGHT = 5.83
 
 " Functions "
 first_default = lambda x: x
@@ -50,7 +55,7 @@ def first_plot():
                         'f':first_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_first_fourier(values)})
-    plt.figure(figsize=(width,height))
+    plt.figure()
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -67,7 +72,7 @@ def second_plot():
                         'f':second_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_second_fourier(values)})
-    plt.figure(figsize=(width,height))
+    plt.figure()
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -85,7 +90,7 @@ def third_plot():
                         'f':third_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_third_fourier(values)})
-    plt.figure(figsize=(width,height))
+    plt.figure()
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 3)
@@ -96,6 +101,22 @@ def third_plot():
         mpld3.save_html(fig[0], f"{DATA_DIR}\\plot3.html")
     else: 
         plt.show()
+
+def parse_html(): 
+    for i in range(1, 4):
+        file = open(f"{DATA_DIR}\\plot{i}.html", "r")
+        new_file = file.read()
+        file.close()
+        file = open(f"{DATA_DIR}\\plot{i}.html", "w")
+        new_file = __replace(new_file)
+        file.write(new_file)
+
+def __replace(new_file): 
+    new_file = new_file.replace('11.0', '20.0')
+    new_file = new_file.replace('12.0', '21.0')
+    new_file = new_file.replace('640.0', '1600.0')
+    new_file = new_file.replace('480.0', '900.0')
+    return new_file
 
 if __name__ == "__main__":
     if "-first" in sys.argv:
@@ -108,3 +129,5 @@ if __name__ == "__main__":
         first_plot()
         second_plot()
         third_plot()
+        parse_html()
+        
