@@ -3,33 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
     <title>Document</title>
 </head>
 <body>
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <header><p class="header_text">Fourier examples</p></header>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <header><p class="header_text">Fourier examples</p>
+        <div class="div-input"><span class="N">N = </span><input class="n-input" type="text" maxlength="25" name="N"></div>
+    </header>
     <div class="first active functions"><p>\(f(x) = x = 2*\sum_{n=1}^\infty \left((-1)^{n+1}\cdot sin(nx)\over n\right)\)</p>
     </div>
     <div class="first-plot plots">
         <button id="image-button-1" class="image-button">Image</button>
-        <object class="plot1" type="text/html" data="data/plot1.html"></object>
-        <img class="plot1-img" src="data/plot1.png" alt="plot1">
+        <div class="plot1">
+        <script> 
+            $(function(){
+            $(".plot1").load("static/data/plot1.html"); 
+            });
+        </script></div>
+        <img class="plot1-img" src="{{url_for('static', filename = 'data/plot1.png')}}" alt="plot1">
     </div>
     <div class="second active functions"><p>\(f(x) = x^2 = {\pi^2\over 3}+4*\sum_{n=1}^\infty \left((-1)^{n}\cdot cos(nx)\over n^2\right)\)</p>
     </div>
     <div class="second-plot plots">
     <button id="image-button-2" class="image-button">Image</button>
-        <object class="plot2" type="text/html" data="data/plot2.html"></object>
-        <img class="plot2-img" src="data/plot2.png" alt="plot1">
+        <div class="plot2">
+        <script> 
+            $(function(){
+            $(".plot2").load("static/data/plot2.html"); 
+            });
+        </script></div>
+        <img class="plot2-img" src="{{url_for('static', filename = 'data/plot2.png')}}" alt="plot1">
     </div>
     <div class="third active functions"><p>\(f(x) = sign x = {4\over \pi}+4*\sum_{n=1}^\infty \left(sin((2n-1)\cdot x)\over 2n-1\right)\)</p>
     </div>
     <div class="third-plot plots">
         <button id="image-button-3" class="image-button">Image</button>
-        <object class="plot3" type="text/html" data="data/plot3.html"></object>
-        <img class="plot3-img" src="data/plot3.png" alt="plot1">
+        <div class="plot3">
+        <script> 
+            $(function(){
+            $(".plot3").load("static/data/plot3.html"); 
+            });
+        </script></div>
+        <img class="plot3-img" src="{{url_for('static', filename = 'data/plot3.png')}}" alt="plot1">
     </div>
-    <script src="src/index.js"></script>
+    <script src="{{url_for('static', filename = 'scripts/index.js')}}"></script>
 </body>
 </html>

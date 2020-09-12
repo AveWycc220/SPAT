@@ -20,6 +20,8 @@ header {
     padding-bottom: 20px;
     font-size: 30pt;
     font-family: 'XITS';
+    display: flex;
+    justify-content: space-between;
 }
 
 .functions {
@@ -64,6 +66,19 @@ header {
 }
 
 .plot1-img, .plot2-img, .plot3-img {
-    width: 70%;
-    height: 750px;
+    width: 80%;
+    height: 950px;
+}
+
+.n-input {
+    padding-left: 10px;
+    text-align: start;
+    padding-top: 1px;
+    border: none;
+    background-color: #34373E;
+    color: white;
+}
+
+.div-input {
+    display: flex;
 }

@@ -17,6 +17,7 @@ const thirdButton = document.querySelector('#image-button-3')
 const firstPlotInter = document.querySelector('.plot1')
 const secondPlotInter = document.querySelector('.plot2')
 const thirdPlotInter = document.querySelector('.plot3')
+const input = document.querySelector('.n-input')
 
 firstPlot.style.display = 'none'
 secondPlot.style.display = 'none'
@@ -121,5 +122,16 @@ thirdButton.addEventListener('click', () => {
     thirdPlotImg.style.display = 'none'
     thirdPlotInter.style.display = 'block'
     thirdButton.textContent = 'Image'
+  }
+})
+
+input.onclick = () => {
+  input.value = 'Press Enter after input'
+  input.select()
+}
+
+input.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    document.location.href += input.value
   }
 })

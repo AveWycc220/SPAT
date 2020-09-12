@@ -6,11 +6,11 @@ import os, sys
 import math
 
 " CONST "
-DATA_DIR = os.path.join( os.path.dirname( __file__ ), '..', 'data\\' )
+DATA_DIR = os.path.join( os.path.dirname( __file__ ), '..\\', 'static\\data' )
 A = -4
 B = 4
 STEP = 0.1
-if (len(sys.argv) == 0):
+if (len(sys.argv)-1 > 0):
     try:
         N = int(sys.argv[1])
     except ValueError as e:
@@ -56,14 +56,14 @@ def first_plot():
                         'f':first_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_first_fourier(values)})
-    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
+    plt.figure(figsize=(WIDTH/40,HEIGHT/40))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
     sns.lineplot(data=fourier, x="x", y="f", linewidth = 2)
     plt.legend(labels=['Default', 'Fourier'])
     if ('-show' not in sys.argv): 
-        plt.savefig(f"{DATA_DIR}\\plot1.png")
+        plt.savefig(f"{DATA_DIR}\\plot1.png", dpi = 300)
         mpld3.save_html(fig[0], f"{DATA_DIR}\\plot1.html")
     else: 
         plt.show()
@@ -73,14 +73,14 @@ def second_plot():
                         'f':second_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_second_fourier(values)})
-    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
+    plt.figure(figsize=(WIDTH/40,HEIGHT/40))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
     sns.lineplot(data=fourier, x="x", y="f", linewidth = 2)
     plt.legend(labels=['Default', 'Fourier'])
     if ('-show' not in sys.argv): 
-        plt.savefig(f"{DATA_DIR}\\plot2.png")
+        plt.savefig(f"{DATA_DIR}\\plot2.png", dpi = 300)
         mpld3.save_html(fig[0], f"{DATA_DIR}\\plot2.html")
     else: 
         plt.show()
@@ -91,14 +91,14 @@ def third_plot():
                         'f':third_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_third_fourier(values)})
-    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
+    plt.figure(figsize=(WIDTH/40,HEIGHT/40))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
-    sns.lineplot(data=default, x="x", y="f", linewidth = 3)
-    sns.lineplot(data=fourier, x="x", y="f", linewidth = 3)
+    sns.lineplot(data=default, x="x", y="f", linewidth = 2)
+    sns.lineplot(data=fourier, x="x", y="f", linewidth = 2)
     plt.legend(labels=['Default', 'Fourier'])
     if ('-show' not in sys.argv): 
-        plt.savefig(f"{DATA_DIR}\\plot3.png")
+        plt.savefig(f"{DATA_DIR}\\plot3.png", dpi = 300)
         mpld3.save_html(fig[0], f"{DATA_DIR}\\plot3.html")
     else: 
         plt.show()
