@@ -11,14 +11,25 @@
     <header><p class="header_text">Fourier examples</p></header>
     <div class="first active functions"><p>\(f(x) = x = 2*\sum_{n=1}^\infty \left((-1)^{n+1}\cdot sin(nx)\over n\right)\)</p>
     </div>
-    <div class="first-plot plots"><object class="plot1" type="text/html" data="data/plot1.html"></object>
+    <div class="first-plot plots">
+        <button id="image-button-1" class="image-button">Image</button>
+        <object class="plot1" type="text/html" data="data/plot1.html"></object>
+        <img class="plot1-img" src="data/plot1.png" alt="plot1">
     </div>
     <div class="second active functions"><p>\(f(x) = x^2 = {\pi^2\over 3}+4*\sum_{n=1}^\infty \left((-1)^{n}\cdot cos(nx)\over n^2\right)\)</p>
     </div>
-    <div class="second-plot plots"><object class="plot2" type="text/html" data="data/plot2.html"></object></div>
+    <div class="second-plot plots">
+    <button id="image-button-2" class="image-button">Image</button>
+        <object class="plot2" type="text/html" data="data/plot2.html"></object>
+        <img class="plot2-img" src="data/plot2.png" alt="plot1">
+    </div>
     <div class="third active functions"><p>\(f(x) = sign x = {4\over \pi}+4*\sum_{n=1}^\infty \left(sin((2n-1)\cdot x)\over 2n-1\right)\)</p>
     </div>
-    <div class="third-plot plots"><object class="plot3" type="text/html" data="data/plot3.html"></object></div>
+    <div class="third-plot plots">
+        <button id="image-button-3" class="image-button">Image</button>
+        <object class="plot3" type="text/html" data="data/plot3.html"></object>
+        <img class="plot3-img" src="data/plot3.png" alt="plot1">
+    </div>
     <script src="src/index.js"></script>
 </body>
 </html>

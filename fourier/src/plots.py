@@ -130,4 +130,3 @@ if __name__ == "__main__":
         second_plot()
         third_plot()
         parse_html()
-        
