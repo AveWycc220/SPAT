@@ -1,12 +1,3 @@
-@font-face {
-    font-family: 'XITS';
-    font-style: normal;
-    font-display:swap;
-    font-weight: 400;
-    src: local('XITS'), local('XITS'),
-         url('../fonts/xits.otf') format('otf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +10,7 @@ header {
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 30pt;
-    font-family: 'XITS';
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     justify-content: space-between;
 }
