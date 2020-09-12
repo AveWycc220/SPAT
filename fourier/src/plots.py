@@ -16,8 +16,9 @@ if (len(sys.argv) == 0):
     except ValueError as e:
         N = 1000
 else: N = 1000
-WIDTH = 9.79
-HEIGHT = 5.83
+WIDTH = 1600.0
+HEIGHT = 900.0
+FONTSIZE = 20.0
 
 " Functions "
 first_default = lambda x: x
@@ -55,7 +56,7 @@ def first_plot():
                         'f':first_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_first_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -72,7 +73,7 @@ def second_plot():
                         'f':second_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_second_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 2)
@@ -90,7 +91,7 @@ def third_plot():
                         'f':third_default(values)})
     fourier = pd.DataFrame({'x':values,
                         'f':lambda_third_fourier(values)})
-    plt.figure()
+    plt.figure(figsize=(WIDTH/96,HEIGHT/96))
     if ('-show' not in sys.argv): 
         fig = plt.subplots()
     sns.lineplot(data=default, x="x", y="f", linewidth = 3)
@@ -112,10 +113,10 @@ def parse_html():
         file.write(new_file)
 
 def __replace(new_file): 
-    new_file = new_file.replace('11.0', '20.0')
-    new_file = new_file.replace('12.0', '21.0')
-    new_file = new_file.replace('640.0', '1600.0')
-    new_file = new_file.replace('480.0', '900.0')
+    new_file = new_file.replace('11.0', f'{FONTSIZE}')
+    new_file = new_file.replace('12.0', f'{FONTSIZE+1}')
+    new_file = new_file.replace('640.0', f'{WIDTH}')
+    new_file = new_file.replace('480.0', f'{HEIGHT}')
     return new_file
 
 if __name__ == "__main__":
