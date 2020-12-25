@@ -32,36 +32,36 @@ def order_burst(M):
         S[0] = signal[:]
         for j in range(J):
             for l in range(int(M/(2 ** (j+1)))):
-                for m in range(2*l, (2*l+(n-1)) + 1):
+                for m in range(2*l, (2*l+n)):
                     if m < int(M/(2 ** j)):
                         S[j+1][l] += h[m-2*l]*S[j][m]
                     else:
                         S[j+1][l] += h[m-2*l]*S[j][m - int(M/(2 ** j))]
-                for m in range(1 + 2*l - (n-1), (1 + 2 * l) + 1):
+                for m in range(2 * l + 1 - (n-1), 2 * l + 2):
                     if m >= 0:
-                        d[j+1][l] += h[1-m+2*l]*S[j][m]
+                        d[j+1][l] += ((-1) ** m) * h[1-m+2*l]*S[j][m]
                     else:
-                        d[j+1][l] += h[1-m+2*l]*S[j][m + int(M/(2 ** j))]
+                        d[j+1][l] += ((-1) ** m) * h[1-m+2*l]*S[j][m + int(M/(2 ** j))]
         check_left = 0
         check_right = 0
         for m in range(M):
             check_left += (S[0][m] ** 2)
         for j in range(J + 1):
-            for m in range(M):
+            for m in range(int(M/(2**j))):
                 check_right += (d[j][m] ** 2)
         print(f'Difference = {check_left - (check_right + (S[J][0] ** 2))}')
         for j in range(J-1, -1, -1):
             for m in range(int(M/(2 ** j))):
-                for l in range(math.ceil(((m-n+1)/2)), math.floor(m/2)):
+                for l in range(math.ceil((m-(n-1))/2), math.floor(m/2)):
                     if l >= 0:
                         S[j][m] += h[m-2*l] * S[j+1][l]
                     else:
-                        S[j][m] += h[m - 2 * l] * S[j+1][l + int(M/(2 ** j))]
+                        S[j][m] += h[m - 2 * l] * S[j+1][l + int(M/(2 ** (j+1)))]
                 for l in range(math.ceil((m-1)/2), math.floor((m+n-2)/2)):
                     if l < int(M / (2 ** j)):
-                        d[j][m] += h[1-m+2*l] * d[j+1][l]
+                        S[j][m] += ((-1) ** m) * h[1-m+2*l] * d[j+1][l]
                     else:
-                        d[j][m] += h[1 - m + 2 * l] * d[j+1][l - int(M/(2 ** j))]
+                        S[j][m] += ((-1) ** m) * h[1 - m + 2 * l] * d[j+1][l - int(M/(2 ** (j+1)))]
         x = [i for i in range(M)]
         plt.figure()
         plt.plot(x, signal, color='red')
@@ -70,6 +70,5 @@ def order_burst(M):
         plt.show()
 
 
-
 if __name__ == '__main__':
-    order_burst(150)
+    order_burst(100)
